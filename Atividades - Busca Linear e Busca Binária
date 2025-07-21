@@ -1,0 +1,83 @@
+Atividades - Busca Linear e Busca Binária	de 13/06/2025 às 00h00 a 13/06/2025 às 23h59	Não	8		
+Essa atividade (Exercício 1 e Exercício 2) conta pontos para a pontuação total dos exercícios ao final do semestre conforme combinado em sala de aula. 
+
+ 
+
+ 
+
+Exercício 1:
+
+Dado um array (arr) desordenado de inteiros distintos, faça a ordenação do mesmo utilizando o algoritmo Quicksort apresentado em sala (SIGAA, Slide-J-2025-05-23 - Na Página 16).
+
+Em seguida, com o vetor já ordenado e um valor "alvo", retorne o índice se o "alvo" for encontrado. Caso contrário, retorne o índice onde ele deveria ser inserido de forma a manter a ordem do array.
+
+ 
+
+a) Faça o exercício utilizando Busca Linear.
+
+def busca_seqencial_valor(arr, alvo):
+    for i in range(len(arr)):
+        if arr[i] >= alvo:
+            return i
+    return len(arr)
+ 
+
+b) Faça o exercício utilizando utilizando Busca Binária. 
+
+def busca_binaria_alvo(arr,target):
+    inicio = 0
+    fim = len(arr)-1
+    while inicio <= fim:
+        meio = (inicio + fim) //2 
+        if arr[meio] == target:
+            return meio
+        elif arr[meio] < target:
+            inicio = meio +1
+        else:
+            fim = meio-1
+            
+    return inicio
+
+ 
+
+ 
+
+Exercício 2:
+
+Dado um array de inteiros chamado citações, onde cada elemento é o número de citações que um artigo de um determinado pesquisador recebeu e o array contém todos os artigos desse pesquisador, determine qual o índice-h dessa pessoa.  
+
+ 
+
+O array citações e entregue ordenado do MAIOR para o MENOR (Decrescente).
+
+ 
+
+O índice-h é definido como o valor máximo de "h" tal que o pesquisador em questão publicou pelo menos "h" artigos, cada um dos quais foi citado pelo menos "h" vezes.
+
+ 
+
+ 
+
+a) Faça o exercício utilizando Busca Linear. 
+
+def busca_seqencial_hindex(citacoes):
+    for i in range(len(citacoes)):
+        h = i + 1
+        if citacoes[i] < h:
+            return i
+    return len(citacoes)
+
+b) Faça o exercício utilizando utilizando Busca Binária.
+
+def busca_binaria_hindex(citacoes):
+    inicio = 0
+    fim = len(citacoes)-1
+    while inicio <= fim:
+        meio = (inicio + fim) //2 
+        h = meio +1
+        if citacoes[meio] >= target:
+            inicio = meio +1
+        else:
+            fim = meio-1
+            
+    return inicio
